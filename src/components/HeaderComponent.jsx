@@ -10,10 +10,14 @@ const HeaderComponent = () => {
     navigate('/admin/panel')
   }
 
+  const handleHomeClick = () => {
+    navigate('/')
+  }
+
 
   return (
       <header>
-        <h1>Taller 440</h1>
+        <h1 onClick={handleHomeClick}>Taller 440</h1>
 
         {isAdmin && (
           <button

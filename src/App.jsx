@@ -15,14 +15,12 @@ function App() {
   return (
     <>
     <HeaderComponent/>
-    <hr />
     <Routes>
       <Route path="/" element={<HomePage/>}/>
       <Route path="/event/:id" element={<EventDetailPage/>}/>
       <Route path="/admin/login" element={<AdminLoginPage/>}/>
       <Route path="/admin/panel" element={<AdminPanelPage/>}/>
     </Routes>
-    <hr />
     <FooterComponent/>
     </>
   )
