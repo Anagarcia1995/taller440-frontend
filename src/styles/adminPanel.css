@@ -1,0 +1,105 @@
+/* === ADMIN PANEL - MOBILE === */
+.admin-container {
+  padding: 5px;
+  margin-top: 0px;
+  
+}
+
+.admin-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.admin-event-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 15px;
+  min-height: 350px;
+}
+
+.admin-event-card img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.admin-event-info h3 {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.admin-event-info p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.admin-edit-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === DESKTOP === */
+@media (min-width: 900px) {
+  /* Tarjetas de eventos: imagen - info - botones */
+  .admin-event-card,
+  .admin-event-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px 0;
+    margin-left: 50px;
+  }
+
+  .admin-event-card img,
+  .admin-event-row img {
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .admin-event-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    width: 500px;
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: auto;
+    align-self: flex-start;
+  }
+
+  .form-buttons button {
+    width: 150px;
+  }
+
+  /* Layout edición: formulario ocupa todo el espacio */
+  .admin-edit-layout {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+  }
+}

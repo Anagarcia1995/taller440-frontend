@@ -1,0 +1,170 @@
+/* ===== FOOTER ===== */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 50px 20px 30px;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* ===== CONTENEDOR GENERAL ===== */
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ===== BLOQUE IZQUIERDO ===== */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo h2 {
+  font-family: var(--font-heading, 'Bebas Neue', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+.footer-subtext {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: -12px;
+}
+
+/* ===== BLOQUE CENTRAL (INFO) ===== */
+.footer-center {
+  width: 100%;
+  margin-top: -20px;
+  text-align: left;
+}
+
+.footer-center h3 {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  text-transform: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Grid para 2 columnas de enlaces (3+3) */
+.footer-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 30px;
+}
+
+.footer-info-grid li {
+  list-style: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-info-grid li:hover {
+  opacity: 1;
+}
+
+/* ===== BLOQUE DERECHO (CONTACTO) ===== */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.footer-right h3 {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  text-transform: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.footer-right p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Iconos debajo de la dirección */
+.footer-socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.footer-socials img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-socials img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* ===== COPYRIGHT ===== */
+.footer-bottom {
+  margin-top: 25px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 15px;
+}
+
+footer .copyright-text {
+  font-size: 0.7rem !important; /* ✅ más pequeño con prioridad */
+  opacity: 0.6;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 900px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* ✅ centra verticalmente logo, info y contacto */
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 180px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    flex: 1;
+  }
+
+  .footer-center {
+    text-align: center;
+    margin-top: 0; /* ✅ quita el desplazamiento hacia arriba */
+  }
+
+  .footer-right {
+    align-items: flex-end; /* todo a la derecha */
+    text-align: right;
+    margin-top: 15px;
+  }
+
+  .footer-socials {
+    justify-content: flex-end; /* iconos pegados al borde */
+  }
+}

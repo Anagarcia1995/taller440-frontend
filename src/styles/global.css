@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* ----------------- VARIABLES ----------------- */
+:root {
+  --color-bg: #000;
+  --color-bg-alt: #222;
+  --color-text: #fff;
+  --color-border: #fff;
+  --color-hover: #222;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ----------------- CONTENEDOR BASE ----------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ----------------- BOTONES BASE ----------------- */
+.btn {
+  display: inline-block;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: var(--color-hover);
+  transform: scale(1.02);
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Variantes de tamaño si necesitas */
+.btn-small { width: 120px; }
+.btn-medium { width: 160px; }
+.btn-large { width: 170px; }
+
+/* ----------------- INPUTS / SELECT / TEXTAREA ----------------- */
+.input {
+  padding: 14px 18px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+/* Labels */
+label {
+  font-size: 1.2rem;
+  color: #ccc;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* ----------------- TIPOGRAFÍA ----------------- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+p, span, li, button {
+  font-family: var(--font-body);
+}
+
+/* ----------------- MEDIA QUERY BASE ----------------- */
+@media (min-width: 900px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

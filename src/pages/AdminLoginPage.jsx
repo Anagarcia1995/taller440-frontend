@@ -1,66 +1,6 @@
-// import React, { useState } from 'react'
-// import {useNavigate} from 'react-router-dom'
-
-
-// const AdminLoginPage = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const navigate = useNavigate();
-
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const response = await fetch("http://localhost:3000/admin/login", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const data = await response.json();
-
-//       if (!response.ok) {
-//         alert(data.error || "Login failed");
-//         return;
-//       }
-
-//       localStorage.setItem("adminToken", data.token);
-//       navigate("/");
-//     } catch (error) {
-//       console.error("Login error:", error);
-//       alert("An error occurred. Please try again.");
-//     }
-//   };
-
-
-//   return (
-//     <div>
-//       <form onSubmit={handleLogin}>
-//         <input 
-//         type="email"
-//         placeholder='Email'
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//         required
-//         />        
-        
-//         <input 
-//         type="password"
-//         placeholder='Password'
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//         required
-//         />
-//         <button type='submit'>LOGIN</button>
-//       </form>
-//     </div>
-//   )
-// }
-
-// export default AdminLoginPage
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/login.css';
 
 const AdminLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -68,6 +8,11 @@ const AdminLoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  // 👇 Limpia cualquier token anterior al entrar al login
+  useEffect(() => {
+    localStorage.removeItem('adminToken');
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -88,7 +33,10 @@ const AdminLoginPage = () => {
         return;
       }
 
+      // ✅ Guardamos el token de admin
       localStorage.setItem('adminToken', data.token);
+
+      // Redirigimos al panel o al home
       navigate('/admin/panel');
     } catch (err) {
       console.error('Login error:', err);
@@ -101,7 +49,7 @@ const AdminLoginPage = () => {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
-        <h2>Admin Login</h2>
+        <h2>WELCOME</h2>
 
         <input
           type="email"

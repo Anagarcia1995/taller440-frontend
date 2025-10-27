@@ -1,0 +1,49 @@
+/* ================================
+   BUTTONS.CSS
+   Botones globales y variantes
+================================ */
+
+/* Todos los botones comparten el estilo base de .btn */
+.back-button,
+.new-event-btn,
+.admin-btn,
+.buy-btn,
+.form-buttons button,
+.new-event-buttons button,
+.login-form button,
+.admin-edit-buttons button, .checkout-btn {
+  display: inline-block;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.back-button:hover,
+.new-event-btn:hover,
+.admin-btn:hover,
+.buy-btn:hover,
+.form-buttons button:hover,
+.new-event-buttons button:hover,
+.login-form button:hover,
+.admin-edit-buttons button:hover, .checkout-btn:hover {
+
+    background-color: white;
+  color: black;
+  transform: scale(1.05);
+
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Tamaños o ajustes específicos */
+.buy-btn { margin-left: 0; }
+.new-event-buttons button { width: 160px; }
+.form-buttons button { width: 150px; }

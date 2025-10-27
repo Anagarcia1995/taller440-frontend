@@ -1,254 +1,122 @@
-// import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
+import '../styles/newEvent.css';
 
-// // Función para formatear la fecha para el input de tipo date (YYYY-MM-DD)
-// const formatDateForInput = (dateStr) => {
-//   if (!dateStr) return '';
-
-//   // Si ya viene en formato YYYY-MM-DD
-//   if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
-//     return dateStr;
-//   }
-
-//   // Si viene como DD/MM/YYYY
-//   if (dateStr.includes('/')) {
-//     const [day, month, year] = dateStr.split('/');
-//     return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-//   }
-
-//   // Si viene como ISO string u otro formato reconocible
-//   const date = new Date(dateStr);
-//   if (!isNaN(date)) {
-//     return date.toISOString().split('T')[0];
-//   }
-
-//   return '';
-// };
-
-// // Función para mostrar la fecha bonita: "Friday 24.10.2025"
-// export const formatDateForDisplay = (dateStr) => {
-//   if (!dateStr) return '';
-//   const [day, month, year] = dateStr.split('/');
-//   const date = new Date(`${year}-${month}-${day}`);
-//   const options = { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' };
-//   return date.toLocaleDateString('en-GB', options).replace(/\//g, '.');
-// }
-
-// const EventFormComponent = ({ eventToEdit, onSuccess, onCancel }) => {
-//   const [name, setName] = useState('');
-//   const [date, setDate] = useState('');
-//   const [djs, setDjs] = useState('');
-//   const [price, setPrice] = useState('');
-//   const [image, setImage] = useState(null);
-
-//   useEffect(() => {
-//     if (eventToEdit) {
-//       setName(eventToEdit.name || '');
-//       setDate(formatDateForInput(eventToEdit.date));
-//       setDjs(eventToEdit.djs || '');
-//       setPrice(eventToEdit.price || '');
-//       setImage(null);
-//     } else {
-//       setName('');
-//       setDate('');
-//       setDjs('');
-//       setPrice('');
-//       setImage(null);
-//     }
-//   }, [eventToEdit]);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const formData = new FormData();
-//       formData.append('name', name);
-//       formData.append('date', date);
-//       formData.append('djs', djs);
-//       formData.append('price', price);
-//       if (image) formData.append('image', image);
-
-//       const token = localStorage.getItem('adminToken');
-//       const url = eventToEdit
-//         ? `http://localhost:3000/events/${eventToEdit._id}`
-//         : 'http://localhost:3000/events';
-//       const method = eventToEdit ? 'PUT' : 'POST';
-
-//       const response = await fetch(url, {
-//         method,
-//         headers: { Authorization: `Bearer ${token}` },
-//         body: formData,
-//       });
-
-//       if (!response.ok) {
-//         alert('Error saving event');
-//         return;
-//       }
-
-//       const data = await response.json();
-//       onSuccess(data);
-//     } catch (error) {
-//       console.error('Submit error', error);
-//       alert('Error saving event');
-//     }
-//   }
-
-//   return (
-//     <form onSubmit={handleSubmit} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-//       <input
-//         type="text"
-//         placeholder="Name"
-//         value={name}
-//         onChange={(e) => setName(e.target.value)}
-//         required
-//       />
-
-//       <input
-//         type="date"
-//         value={date}
-//         onChange={(e) => setDate(e.target.value)}
-//         required
-//         min={new Date().toISOString().split('T')[0]} // evita fechas pasadas
-//       />
-//       {date && (
-//         <p>Preview: {formatDateForDisplay(date)}</p>
-//       )}
-
-//       <input
-//         type="text"
-//         placeholder="DJs"
-//         value={djs}
-//         onChange={(e) => setDjs(e.target.value)}
-//         required
-//       />
-
-//       <input
-//         type="number"
-//         placeholder="Price"
-//         value={price}
-//         onChange={(e) => setPrice(e.target.value)}
-//         required
-//       />
-
-//       <input
-//         type="file"
-//         onChange={(e) => setImage(e.target.files[0])}
-//       />
-
-//       <button type="submit">{eventToEdit ? 'Update Event' : 'Create Event'}</button>
-//       <button type="button" onClick={onCancel}>Cancel</button>
-//     </form>
-//   )
-// }
-
-// export default EventFormComponent;
-import React, { useEffect, useState } from 'react';
-import { formatDateForInput, formatDateForDisplay } from '../utils/dateUtils';
-
-const EventFormComponent = ({ eventToEdit, onSuccess, onCancel }) => {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
-  const [djs, setDjs] = useState('');
-  const [price, setPrice] = useState('');
+const EventFormComponent = ({ onSuccess, onCancel, eventToEdit }) => {
+  const [name, setName] = useState(eventToEdit?.name || '');
+  const [date, setDate] = useState(eventToEdit?.date || '');
+  const [djs, setDjs] = useState(eventToEdit?.djs || '');
+  const [price, setPrice] = useState(eventToEdit?.price || '');
   const [image, setImage] = useState(null);
-
-  useEffect(() => {
-    if (eventToEdit) {
-      setName(eventToEdit.name || '');
-      setDate(formatDateForInput(eventToEdit.date));
-      setDjs(eventToEdit.djs || '');
-      setPrice(eventToEdit.price || '');
-    } else {
-      setName('');
-      setDate('');
-      setDjs('');
-      setPrice('');
-    }
-    setImage(null);
-  }, [eventToEdit]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
+      const token = localStorage.getItem('adminToken');
       const formData = new FormData();
+
       formData.append('name', name);
       formData.append('date', date);
       formData.append('djs', djs);
       formData.append('price', price);
       if (image) formData.append('image', image);
 
-      const token = localStorage.getItem('adminToken');
+      const method = eventToEdit ? 'PUT' : 'POST';
       const url = eventToEdit
         ? `http://localhost:3000/events/${eventToEdit._id}`
         : 'http://localhost:3000/events';
-      const method = eventToEdit ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
         method,
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
 
-      if (!response.ok) {
-        alert('Error saving event');
-        return;
+      if (response.ok) {
+        onSuccess();
+      } else {
+        const errorText = await response.text();
+        console.error('Error al guardar el evento:', errorText);
+        alert('Error al guardar el evento');
       }
-
-      const data = await response.json();
-      onSuccess(data);
     } catch (error) {
-      console.error('Submit error', error);
-      alert('Error saving event');
+      console.error('Error en la petición:', error);
+      alert('Error al guardar el evento');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="event-form"
-    >
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
+    <form className="new-event-form" onSubmit={handleSubmit}>
+      {/* Parte de inputs */}
+      <div className="new-event-form-fields">
+        <label>Name </label>
+        <input
+          type="text"
+          placeholder="name event"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        required
-        min={new Date().toISOString().split('T')[0]} // evita fechas pasadas
-      />
+        <label>Date</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
 
-      {date && <p className="date-preview">Preview: {formatDateForDisplay(date)}</p>}
+        <label>DJs</label>
+        <input
+          type="text"
+          placeholder="DJs invitados"
+          value={djs}
+          onChange={(e) => setDjs(e.target.value)}
+        />
 
-      <input
-        type="text"
-        placeholder="DJs"
-        value={djs}
-        onChange={(e) => setDjs(e.target.value)}
-        required
-      />
+        <label>Price</label>
+        <input
+          type="number"
+          placeholder="Precio"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          min="0"
+        />
 
-      <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        required
-      />
+        <label>Flyer</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+      </div>
 
-      <input
-        type="file"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
+      {/* Preview de imagen */}
+      <div className="new-event-image-preview">
+        {image ? (
+          <img src={URL.createObjectURL(image)} alt="Preview" />
+        ) : eventToEdit?.image ? (
+          <img
+            src={`http://localhost:3000/${eventToEdit.image}`}
+            alt="Evento existente"
+          />
+        ) : null}
+      </div>
 
-      <div className="form-buttons">
-        <button type="submit">{eventToEdit ? 'Update Event' : 'Create Event'}</button>
-        <button type="button" onClick={onCancel}>Cancel</button>
+      {/* Botones */}
+      <div className="new-event-buttons">
+        <button type="submit" disabled={loading}>
+          {loading ? 'Guardando...' : 'Update'}
+        </button>
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
       </div>
     </form>
   );

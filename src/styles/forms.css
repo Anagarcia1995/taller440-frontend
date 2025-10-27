@@ -1,0 +1,41 @@
+/* ================================
+   FORMS.CSS - COMÚN
+================================ */
+
+/* Inputs, selects y textarea en todos los formularios */
+.new-event-form input,
+.new-event-form select,
+.new-event-form textarea,
+.admin-edit-form input,
+.admin-edit-form select,
+.admin-edit-form textarea,
+.login-form input,
+.login-form select,
+.login-form textarea {
+  background-color: #444; /* gris medio */
+  color: #fff;            /* letras blancas */
+  padding: 14px 18px;
+  font-size: 1.2rem;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Placeholder más claro */
+.new-event-form input::placeholder,
+.new-event-form textarea::placeholder,
+.admin-edit-form input::placeholder,
+.admin-edit-form textarea::placeholder,
+.login-form input::placeholder,
+.login-form textarea::placeholder {
+  color: #aaa;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #f55;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
