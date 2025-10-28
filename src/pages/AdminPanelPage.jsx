@@ -29,7 +29,7 @@ const EventCard = ({ event, isEditing, onEdit, onDelete, onFormSuccess }) => {
             <p>{event.djs}</p>
             <p>{event.price}€</p>
           </div>
-          <div className="form-buttons admin-btn-column">
+          <div className="form-buttons">
             <button onClick={onEdit}>Edit</button>
             <button onClick={onDelete}>Delete</button>
           </div>

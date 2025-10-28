@@ -31,32 +31,51 @@ html, body, #root {
 }
 
 /* ----------------- BOTONES BASE ----------------- */
-.btn {
+.btn,
+.back-button,
+.new-event-btn,
+.admin-btn,
+.buy-btn,
+.form-buttons button,
+.new-event-buttons button,
+.login-form button,
+.admin-edit-buttons button,
+.checkout-btn,
+.subscribe-btn {
   display: inline-block;
   background: var(--color-bg);
   color: var(--color-text);
   border: 2px solid var(--color-border);
-  padding: 10px 16px;
+  padding: 10px 10px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: background 0.2s ease, transform 0.1s ease;
+  width: 200px; /* tamaño uniforme */
+  text-align: center;
+
 }
 
-.btn:hover {
-  background: var(--color-hover);
-  transform: scale(1.02);
+.btn:hover,
+.back-button:hover,
+.new-event-btn:hover,
+.admin-btn:hover,
+.buy-btn:hover,
+.form-buttons button:hover,
+.new-event-buttons button:hover,
+.login-form button:hover,
+.admin-edit-buttons button:hover,
+.checkout-btn:hover,
+.subscribe-btn:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
 }
 
-.btn:disabled {
+button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
-/* Variantes de tamaño si necesitas */
-.btn-small { width: 120px; }
-.btn-medium { width: 160px; }
-.btn-large { width: 170px; }
 
 /* ----------------- INPUTS / SELECT / TEXTAREA ----------------- */
 .input {

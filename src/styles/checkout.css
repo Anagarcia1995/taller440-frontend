@@ -1,14 +1,14 @@
 .checkout-container {
   display: flex;
-  flex-direction: column; /* para que el botón quede encima del formulario */
-  align-items: center; /* asegura que los elementos se alineen a la izquierda */
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   min-height: 80vh;
 }
 
-.back-button{
+.back-button {
   margin-bottom: 20px;
-
+  margin-left: 220px;
 }
 
 .checkout-form {
@@ -20,12 +20,12 @@
   width: 100%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   background-color: transparent;
-  border: 1.5px solid white; /* ✅ marco blanco */
-  border-radius: 0; /* ✅ sin bordes redondeados */
+  border: 1.5px solid white;
+  border-radius: 0;
 }
 
 .payment-title {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 1.5rem;
   font-weight: 500;
   color: white;
@@ -53,7 +53,7 @@
   font-size: 1.1rem;
   border: none;
   width: 100%;
-  box-sizing: border-box; /* ✅ evita desbordes */
+  box-sizing: border-box;
 }
 
 .split {
@@ -62,12 +62,11 @@
 }
 
 .split .input_container {
-  flex: 1; /* ✅ cada campo ocupa 50% exacto */
+  flex: 1;
 }
 
 @media (max-width: 500px) {
   .split {
     flex-direction: column;
   }
-
 }

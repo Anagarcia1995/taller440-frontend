@@ -27,18 +27,84 @@
   object-fit: cover;
 }
 
-.new-event-buttons {
+.new-event-btn  {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.new-event-buttons{
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 20px;
+}
+
+.new-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+
+.new-event-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.new-event-image-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.new-event-image-preview img {
+  width: 100px;
+  height: 150px;
+
+  object-fit: cover;
+}
+
+.new-event-btn  {
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
+  margin-left: 50px;
+}
+.new-event-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 @media (min-width: 900px) {
+  /* === Botón "New Event" === */
+  .new-event-btn {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px; /* ✅ se separa del borde izquierdo solo en escritorio */
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  /* === Formulario === */
   .new-event-form {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 40px;
+    border: 2px solid white;
+    border-radius: 0;
+    padding: 20px;
+    background-color: #000;
+    position: relative;
+    min-height: 650px;
+    max-width: 900px;
+    margin: 50px auto; /* ✅ margen superior e inferior de 50px solo en escritorio */
   }
 
   .new-event-form-fields {
@@ -53,10 +119,22 @@
   }
 
   .new-event-image-preview img {
-    height: 300px;
+    height: 400px;
+    width: 300px;
   }
 
   .new-event-buttons {
-    margin-top: 0px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+
+  .new-event-buttons button {
+    min-width: 120px;
   }
 }
+

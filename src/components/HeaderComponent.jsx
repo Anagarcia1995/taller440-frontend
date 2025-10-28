@@ -11,7 +11,6 @@ const HeaderComponent = () => {
       setIsAdmin(!!localStorage.getItem('adminToken'));
     };
 
-    // Escucha tanto cambios globales como nuestro evento personalizado
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('storageChange', handleStorageChange);
 
@@ -25,12 +24,13 @@ const HeaderComponent = () => {
   const handleAdminClick = () => navigate('/admin/panel');
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
-    window.dispatchEvent(new Event('storageChange')); // 🔔 avisar al header
+    window.dispatchEvent(new Event('storageChange'));
     navigate('/');
   };
 
   return (
     <header>
+      {/* Logo + Nombre */}
       <div className="header-left" onClick={handleHomeClick}>
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200">
           <rect width="200" height="200" fill="black" />
@@ -40,11 +40,21 @@ const HeaderComponent = () => {
         <h1>Taller440</h1>
       </div>
 
+      {/* Botones admin + logout */}
       {isAdmin && (
         <div className="header-right">
-          <button onClick={handleAdminClick} className="admin-btn">
+          {/* ADMIN como <p> */}
+          <p
+            className="admin-text"
+            onClick={handleAdminClick}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleAdminClick()}
+          >
             ADMIN
-          </button>
+          </p>
+
+          {/* Logout */}
           <button onClick={handleLogout} className="logout" title="Cerrar sesión">
             <img
               src="https://img.icons8.com/?size=100&id=2445&format=png&color=FFFFFF"

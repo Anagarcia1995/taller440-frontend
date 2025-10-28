@@ -13,7 +13,6 @@ import CheckoutPage from "./pages/ckeckoutPage";
 
 import './styles/global.css';
 import './styles/typography.css';
-import './styles/buttons.css';
 import './styles/forms.css';
 import './styles/layout.css';
 

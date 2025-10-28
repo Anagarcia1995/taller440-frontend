@@ -1,9 +1,8 @@
 /* === Header - Mobile First === */
 
-/* Contenedor principal */
 header {
   display: flex;
-  justify-content: flex-start; /* logo + nombre a la izquierda en mobile */
+  justify-content: flex-start;
   align-items: center;
   padding: 10px 15px;
   background-color: #0000008c;
@@ -14,7 +13,6 @@ header {
   z-index: 100;
 }
 
-/* Contenedor del logo + nombre */
 .header-left {
   display: flex;
   align-items: center;
@@ -22,7 +20,6 @@ header {
   gap: 8px;
 }
 
-/* Nombre del sitio */
 .header-left h1 {
   font-size: 1.5rem;
   color: #fff;
@@ -30,18 +27,24 @@ header {
   transition: color 0.2s ease;
 }
 
-/* === NUEVO: Botones admin + logout === */
 .header-right {
-  margin-left: auto; /* los manda a la derecha */
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.admin-btn{
-  width: 100px;
-  height: 40px;
-  margin-top: 8px;
+.admin-text {
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background 0.2s ease, transform 0.1s ease;
+  user-select: none;
+  margin-top: 20px;
+}
+
+.admin-text:hover {
+  transform: scale(1.05);
+
 }
 
 .logout {
@@ -53,6 +56,7 @@ header {
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease;
+
 }
 
 .logout:hover {
@@ -68,8 +72,8 @@ header {
 /* === Desktop Styles === */
 @media (min-width: 900px) {
   header {
-    justify-content: left; /* logo + nombre a la izquierda en desktop */
-    padding: 20px; /* más margen lateral en desktop */
+    justify-content: left;
+    padding: 20px;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -81,7 +85,7 @@ header {
   .header-left h1 {
     font-size: 1.8rem;
   }
-  .logout-icon {
-    margin-top: -10px;
-  }
+
+
+
 }

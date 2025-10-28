@@ -58,7 +58,7 @@ const EventFormComponent = ({ onSuccess, onCancel, eventToEdit }) => {
         <label>Name </label>
         <input
           type="text"
-          placeholder="name event"
+          placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -75,7 +75,7 @@ const EventFormComponent = ({ onSuccess, onCancel, eventToEdit }) => {
         <label>DJs</label>
         <input
           type="text"
-          placeholder="DJs invitados"
+          placeholder="DJs"
           value={djs}
           onChange={(e) => setDjs(e.target.value)}
         />
@@ -83,7 +83,7 @@ const EventFormComponent = ({ onSuccess, onCancel, eventToEdit }) => {
         <label>Price</label>
         <input
           type="number"
-          placeholder="Precio"
+          placeholder="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           min="0"

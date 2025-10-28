@@ -1,17 +1,15 @@
-/* ===== HOME PAGE ===== */
 .home-page {
   width: 100%;
   margin-bottom: -50px;
+  margin-top: -70px;
   padding: 0;
-  box-sizing: border-box;
   position: relative;
 }
 
-/* ===== VIDEO ===== */
 .home-video-section {
-  display: none; /* oculto en mobile */
+  display: none;
   width: 100%;
-  height: 45vh; /* altura estándar escritorio */
+  height: 45vh;
   position: relative;
   overflow: hidden;
 }
@@ -20,7 +18,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   filter: grayscale(100%) contrast(120%) brightness(90%);
 }
 
@@ -33,17 +30,14 @@
   pointer-events: none;
 }
 
-/* ===== EVENTS GRID ===== */
 .events-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile: 1 columna */
+  grid-template-columns: 1fr;
   padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .event-card {
   width: 350px;
-  height: auto;
   text-align: center;
   cursor: pointer;
   padding: 40px;
@@ -57,7 +51,6 @@
 
 .event-image {
   width: 100%;
-  height: auto;
   max-height: 350px;
   object-fit: cover;
   margin-bottom: 15px;
@@ -68,7 +61,6 @@
   font-weight: 300;
 }
 
-/* ===== SUBSCRIBE SECTION ===== */
 .subscribe-section {
   width: 90%;
   max-width: 800px;
@@ -76,11 +68,9 @@
   padding: 40px 30px;
   border: 2px solid white;
   text-align: center;
-  color: white;
   background-color: transparent;
 }
 
-/* ✅ TÍTULO PERSONALIZADO (sin mayúsculas globales) */
 .subscribe-title, p {
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -106,8 +96,6 @@
   border: 1px solid white;
   background: transparent;
   color: white;
-  outline: none;
-  transition: all 0.3s ease;
 }
 
 .subscribe-input::placeholder {
@@ -118,26 +106,9 @@
   border-color: #888;
 }
 
-.subscribe-btn {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 10px 25px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.subscribe-btn:hover {
-  background-color: white;
-  color: black;
-  transform: scale(1.05);
-}
-
-/* ===== DESKTOP ===== */
 @media (min-width: 900px) {
   .home-video-section {
-    display: block; /* visible solo en escritorio */
+    display: block;
     height: 45vh;
   }
 
@@ -146,19 +117,12 @@
     column-gap: 24px;
     row-gap: 60px;
     padding: 0 40px;
-    margin-top: 60px;
-    margin-bottom: 100px;
-    margin-left: 120px;
-    margin-right: 120px;
+    margin: 0 120px 100px 120px;
   }
 
   .event-image {
     max-height: 550px;
     margin-bottom: 20px;
-  }
-
-  .event-date {
-    font-size: 1rem;
   }
 
   .subscribe-section {
@@ -172,10 +136,5 @@
   .subscribe-input {
     max-width: 400px;
     height: 45px;
-  }
-
-  .subscribe-btn {
-    height: 45px;
-    padding: 0 30px;
   }
 }
